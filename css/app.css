@@ -361,7 +361,7 @@ html.large .hero .txt{max-width:70%}
 /* 가로 스크롤 방지 · 터치 */
 #view,.screen{max-width:100%}
 button,a,[data-mpin]{touch-action:manipulation}
-@media (min-width:520px){body{display:flex;justify-content:center}}
+@media (min-width:520px){body{display:flex;justify-content:center}#app{width:100%}}
 
 /* splash */
 #splash{position:fixed;inset:0;z-index:200;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;transition:opacity .3s ease}
