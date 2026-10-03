@@ -1,11 +1,12 @@
 /* 온길 Service Worker — 한 번 접속하면 전시장 와이파이가 불안정해도 앱이 열려요 */
-const VERSION = 'ongil-v1.0.2';
+const VERSION = 'ongil-v1.0.3-b';
 const SHELL = [
   '/',
   '/index.html',
+  '/404.html',
   '/manifest.webmanifest',
   '/css/app.css',
-  '/js/app.js',
+  '/js/app-1.0.3.js',
   '/icons/apple-touch-icon.png',
   '/icons/favicon-32.png',
   '/icons/icon-192.png',
@@ -71,7 +72,8 @@ self.addEventListener('fetch', e => {
     e.respondWith(
       fetch(req).then(res => {
         const copy = res.clone();
-        caches.open(VERSION).then(c => c.put('/index.html', copy));
+        caches.open(VERSION).then(c => c.put('/index.html',
+  '/404.html', copy));
         return res;
       }).catch(() => caches.match('/index.html'))
     );
@@ -90,13 +92,13 @@ self.addEventListener('fetch', e => {
     return;
   }
 
-  // 같은 출처의 CSS·JS·이미지: 캐시 우선
+  // 같은 출처의 CSS·JS·이미지: 항상 최신 파일을 먼저 받고, 인터넷이 끊겼을 때만 저장본 사용
   if (url.origin === self.location.origin) {
     e.respondWith(
-      caches.match(req, { ignoreSearch: true }).then(hit => hit || fetch(req).then(res => {
+      fetch(req, { cache: 'no-cache' }).then(res => {
         if (res.ok) { const copy = res.clone(); caches.open(VERSION).then(c => c.put(req, copy)); }
         return res;
-      }))
+      }).catch(() => caches.match(req, { ignoreSearch: true }))
     );
   }
 });
