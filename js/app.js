@@ -411,7 +411,7 @@ const ACT={
   joinCampaign(){closeSheet();vib();toast('캠페인에 참여해주셔서 고마워요! 💚')},
   about(){sheet(`<div class="brand" style="margin-bottom:12px"><img src="${IMG.logo}" alt=""><span>온길</span></div><p class="desc">온길은 ‘따뜻한 길’이라는 뜻이에요. 길을 잃은 치매 어르신을 발견한 이웃이 QR 하나로 보호자와 바로 연결되고, 어르신이 안전하게 집으로 돌아갈 수 있도록 돕는 연결 서비스입니다.</p><p class="desc" style="font-size:.78rem">※ 이 앱은 체험용 시제품으로, 실제 전화·문자·위치 전송은 이루어지지 않아요.</p><button class="btn green" data-act="closeSheet">확인</button>`)},
   call(){closeSheet();callScreen(guardian(),S.reg?S.reg.relation+' 보호자':'등록된 보호자')},
-  tel(el){const n=el.dataset.num,nm=el.dataset.name;sheet(`<h3>${nm}</h3><p class="desc">${n}번으로 전화를 걸까요?<br>실제 전화가 연결됩니다.</p><a class="btn green" href="tel:${n.replace(/-/g,'')}" style="text-decoration:none">${I.phone}${n} 전화 걸기</a><button class="btn ghost" data-act="closeSheet" style="margin-top:10px">취소</button>`)},
+  tel(el){const n=el.dataset.num,nm=el.dataset.name;closeSheet();callScreen(nm,`${n} · 체험용 연결`)},
   shareLoc(){closeSheet();sheet(`<h3>현재 위치 공유</h3><p class="desc">어르신의 현재 위치를 보호자 ${esc(curElder?curElder.g:guardian())}님에게 보내고, 집으로 가는 길을 안내해 드릴게요.</p>
     <div class="opt" style="pointer-events:none" id="locbox">${I.pin}<span><b id="locname">현재 위치 확인 중…</b><small id="locsub">위치 권한을 허용하면 실제 위치로 확인해요</small></span></div>
     <button class="btn green" data-act="doShare">${I.share}위치 보내고 길 안내 시작</button><button class="btn ghost" data-act="closeSheet" style="margin-top:10px">취소</button>`,()=>locate())},
@@ -539,8 +539,9 @@ function sosSent(){
   const label=sit!=null?SITS[sit][1]:'긴급 상황';
   addNotif('n_heart',`긴급 도움 요청이 전송되었습니다.`,`${label} · 현재 위치 함께 전송`,'emergency');
   fullCleanup=null;vib([80,60,80]);
-  full('sos',`<div class="grow"></div><div class="check" style="width:96px;height:96px;border-radius:50%;background:#fff;display:grid;place-items:center;animation:pop .4s">${sv('<path d="M5 12.5l4.5 4.5L19 7.5"/>',3,'#D63A33',48)}</div><h2 style="margin-top:22px">요청을 보냈어요</h2><p>보호자 ${esc(guardian())}님에게<br>${label} 알림과 현재 위치를 보냈어요.</p><div class="grow"></div><div class="stack" style="width:100%;max-width:360px"><button class="btn ghost" data-act="sosCall">${I.phone}보호자에게 전화하기</button><a class="btn" href="tel:119" style="background:rgba(255,255,255,.18);text-decoration:none">119에 전화하기</a><button class="btn" style="background:transparent" data-act="sosClose">닫기</button></div>`);
+  full('sos',`<div class="grow"></div><div class="check" style="width:96px;height:96px;border-radius:50%;background:#fff;display:grid;place-items:center;animation:pop .4s">${sv('<path d="M5 12.5l4.5 4.5L19 7.5"/>',3,'#D63A33',48)}</div><h2 style="margin-top:22px">요청을 보냈어요</h2><p>보호자 ${esc(guardian())}님에게<br>${label} 알림과 현재 위치를 보냈어요.</p><div class="grow"></div><div class="stack" style="width:100%;max-width:360px"><button class="btn ghost" data-act="sosCall">${I.phone}보호자에게 전화하기</button><button class="btn" style="background:rgba(255,255,255,.18)" data-act="sos119">119에 전화하기</button><button class="btn" style="background:transparent" data-act="sosClose">닫기</button></div>`);
 }
+ACT.sos119=()=>{closeFull();callScreen('119 종합상황실','119 · 체험용 연결')};
 ACT.sosCall=()=>{closeFull();ACT.call()};
 ACT.sosClose=()=>{closeFull();refresh()};
 
@@ -581,6 +582,12 @@ function elderResult(id='001',fromQR){
   addNotif('n_heart','발견 제보가 접수되었습니다.',`${e.name} 어르신 · QR 스캔으로 연결`,'found');
 }
 ACT.callElderG=()=>{const e=curElder||ELDERS['001'];closeSheet();callScreen(e.g,`${e.name} 어르신의 ${e.rel}`)};
+
+/* ---------- 전시용 안전장치: 실제 전화·문자 연결 차단 ---------- */
+document.addEventListener('click',e=>{
+  const a=e.target.closest('a[href^="tel:"],a[href^="sms:"]');
+  if(a){e.preventDefault();e.stopImmediatePropagation();callScreen(a.textContent.trim()||'연결','체험용 연결');}
+},true);
 
 /* ---------- event delegation ---------- */
 document.addEventListener('click',e=>{
