@@ -416,3 +416,13 @@ button,a,[data-mpin]{touch-action:manipulation}
 .promo .lnk{margin-top:6px;font-size:.8rem;font-weight:700;color:var(--orange-d)}
 .promo .p-ic{flex:none;width:72px;height:72px;border-radius:50%;background:#fff;display:grid;place-items:center;color:var(--orange)}
 .promo:active{filter:brightness(.97)}
+
+/* 실제 데모 QR */
+.qrlive{position:relative;width:172px;height:172px;margin:14px auto 12px;padding:12px;background:#fff}
+.qrlive svg{width:100%;height:100%;display:block}
+.qrlive::before,.qrlive::after{content:"";position:absolute;inset:-4px;pointer-events:none;border:4px solid var(--green);border-radius:14px;
+  -webkit-mask:linear-gradient(#000 0 0) top left/34px 34px no-repeat,linear-gradient(#000 0 0) top right/34px 34px no-repeat,linear-gradient(#000 0 0) bottom left/34px 34px no-repeat,linear-gradient(#000 0 0) bottom right/34px 34px no-repeat;
+  mask:linear-gradient(#000 0 0) top left/34px 34px no-repeat,linear-gradient(#000 0 0) top right/34px 34px no-repeat,linear-gradient(#000 0 0) bottom left/34px 34px no-repeat,linear-gradient(#000 0 0) bottom right/34px 34px no-repeat}
+.qrlive::after{display:none}
+.qpick{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin:0 0 10px}
+.qpick .fchip{height:34px;padding:0 12px;font-size:.78rem}

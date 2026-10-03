@@ -27,8 +27,9 @@
     sw.js                   Service Worker (오프라인 캐시)
     vercel.json             모든 주소를 index.html로 연결 + 캐시 헤더
     css/app.css             디자인
-    js/app-1.0.4.js           화면·라우팅·기능 (수정 시 파일 이름의 버전도 올려주세요)
-    assets/img/             일러스트·아이콘
+    js/app-1.0.5.js           화면·라우팅·기능 (수정 시 파일 이름의 버전도 올려주세요)
+    js/vendor/              QR 인식(jsQR, Apache-2.0) · QR 생성(qrcode-generator, MIT)
+    assets/img/             일러스트·아이콘 (AI 업스케일 고화질)
     icons/                  앱 아이콘
 
 ## 참고
