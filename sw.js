@@ -1,5 +1,5 @@
 /* 온길 Service Worker — 한 번 접속하면 전시장 와이파이가 불안정해도 앱이 열려요 */
-const VERSION = 'ongil-v1.0.1';
+const VERSION = 'ongil-v1.0.2';
 const SHELL = [
   '/',
   '/index.html',
