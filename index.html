@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<script>window.__t0=performance.now()</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+<title>온길</title>
+<meta name="description" content="길을 잃은 치매 어르신과 보호자를 이어주는 따뜻한 귀가 연결 서비스, 온길 (졸업전시 체험판)">
+<meta name="theme-color" content="#FAF5EF">
+<meta name="color-scheme" content="light">
+<meta name="format-detection" content="telephone=no">
+
+<!-- PWA -->
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="application-name" content="온길">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="온길">
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192.png">
+
+<!-- 첫 화면 이미지 미리 불러오기 -->
+<link rel="preload" as="image" href="/assets/img/logo.webp">
+<link rel="preload" as="image" href="/assets/img/home_hero.webp">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@700&family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+<!-- 스플래시: 온길 로고 → 짧은 로딩 → 서비스 -->
+<div id="splash" role="status" aria-label="온길을 여는 중">
+  <img src="/assets/img/logo.webp" alt="">
+  <b>온길</b>
+  <small>따뜻한 귀가를 돕는 연결 서비스</small>
+  <span class="ld"><i></i></span>
+</div>
+
+<div id="app">
+  <main id="view"></main>
+  <nav id="tabs" aria-label="메인 메뉴"></nav>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <div class="bk" id="bk" aria-hidden="true"><span class="blob"></span><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></div>
+</div>
+<noscript><p style="padding:24px;font-family:sans-serif">온길을 사용하려면 브라우저의 JavaScript를 켜주세요.</p></noscript>
+<script src="/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+{
+  "name": "ongil",
+  "version": "1.0.0",
+  "private": true,
+  "description": "온길(ON-GIL) — 치매 어르신 귀가 연결 서비스 · 졸업전시용 모바일 웹앱/PWA",
+  "scripts": {
+    "dev": "npx --yes serve@14 -s . -l 3000"
+  }
+}
