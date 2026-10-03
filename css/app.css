@@ -407,3 +407,12 @@ button,a,[data-mpin]{touch-action:manipulation}
 .preview{margin:12px 18px 0;padding:16px}
 .preview b{display:block;font-size:1.15rem;margin:6px 0 4px}
 .preview p{margin:0;font-size:.86rem;color:var(--sub)}
+
+/* 홈 · 치매예방 프로그램 배너 */
+.promo{margin:12px 18px 0;display:flex;align-items:center;background:var(--orange-soft);border-radius:18px;overflow:hidden;text-align:left;width:calc(100% - 36px);min-height:112px;padding-right:16px}
+.promo .c-t{padding:14px 0 14px 16px;flex:1;display:flex;flex-direction:column;gap:4px}
+.promo .chip{background:var(--orange);color:#fff;align-self:flex-start}
+.promo b{font-size:1.05rem;margin-top:4px}
+.promo .lnk{margin-top:6px;font-size:.8rem;font-weight:700;color:var(--orange-d)}
+.promo .p-ic{flex:none;width:72px;height:72px;border-radius:50%;background:#fff;display:grid;place-items:center;color:var(--orange)}
+.promo:active{filter:brightness(.97)}

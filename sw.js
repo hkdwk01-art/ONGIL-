@@ -1,12 +1,12 @@
 /* 온길 Service Worker — 한 번 접속하면 전시장 와이파이가 불안정해도 앱이 열려요 */
-const VERSION = 'ongil-v1.0.3-b';
+const VERSION = 'ongil-v1.0.4';
 const SHELL = [
   '/',
   '/index.html',
   '/404.html',
   '/manifest.webmanifest',
   '/css/app.css',
-  '/js/app-1.0.3.js',
+  '/js/app-1.0.4.js',
   '/icons/apple-touch-icon.png',
   '/icons/favicon-32.png',
   '/icons/icon-192.png',
